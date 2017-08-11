@@ -87,7 +87,7 @@ void intGenerator(signed int* arr) {
     std::mt19937_64 randomNumberGenerator;
     randomNumberGenerator.seed(time(NULL)); // pseudo-random seed based on time to gen. rnd numbers
     uniform_int_distribution <signed int> generator(INT32_MIN,INT32_MAX);
-    uniform_int_distribution <unsigned> lengthGenerator(10,20);
+    uniform_int_distribution <size_t> lengthGenerator(10,20);
     arrSize = lengthGenerator(randomNumberGenerator);
     {
         extern signed int * arr; // used extern because of the given global variable ptr.
