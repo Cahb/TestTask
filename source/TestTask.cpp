@@ -27,7 +27,7 @@ void revertWords(char *arr){
         stringsBuffer += singleWordBuffer + " ";
     }
     stringsBuffer.resize(stringsBuffer.size()-1); // remove last space;
-    strcpy(arr,stringsBuffer.c_str());
+    std::strcpy(arr,stringsBuffer.c_str());
     whiteSpacesRemover.clear();
     whiteSpacesRemover << stringsBuffer;
     while ((whiteSpacesRemover >> singleWordBuffer)){
