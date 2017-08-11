@@ -20,8 +20,8 @@ void revertWords(char *arr){
     size_t stackSize=0;
     stringsBuffer = arr;
     stack <string> tempStack;
-    if( stringsBuffer.find_first_not_of(" \t") == string::npos) return;
-    whiteSpacesRemover << stringsBuffer;
+    if( stringsBuffer.find_first_not_of(" \t") == string::npos) return; // basically - str is either empty \ contains single word
+    whiteSpacesRemover << stringsBuffer;                                // which means nothing to revert
     stringsBuffer.clear();
     while ((whiteSpacesRemover >> singleWordBuffer)){
         stringsBuffer += singleWordBuffer + " ";
@@ -34,7 +34,7 @@ void revertWords(char *arr){
         tempStack.push(singleWordBuffer + " ");
     }
     stackSize = tempStack.size();
-    memset(arr, 0, strlen(arr)); // clear string, just in case
+    std::memset(arr, 0, strlen(arr)); // clear string, just in case
     stringsBuffer.clear();
     for(size_t i = 0; i < stackSize;++i){
         stringsBuffer += tempStack.top();
@@ -46,7 +46,7 @@ void revertWords(char *arr){
 
 //Revert words using previous method and return the longest.
 std::string processWords(std::string const& input){
-    string resultString;
+    string singleWordString;
     stringstream words;
     size_t wordSize=0, longestWordIndex=-1;
     wordSize = input.find_first_not_of(" \t");
@@ -63,8 +63,8 @@ std::string processWords(std::string const& input){
     */
     words << input;
     vector <string> wordsVector; // to easy-find the longest (by index)
-    while ((words >> resultString)){
-        wordsVector.push_back(resultString + "\0");
+    while ((words >> singleWordString)){
+        wordsVector.push_back(singleWordString + "\0");
     }
     wordSize = -1;
     longestWordIndex= 0;
@@ -90,7 +90,7 @@ void intGenerator(signed int* arr) {
     uniform_int_distribution <unsigned> lengthGenerator(10,20);
     arrSize = lengthGenerator(randomNumberGenerator);
     {
-        extern signed int * arr;
+        extern signed int * arr; // used extern because of the given global variable ptr.
         if(arr == nullptr)
             arr = new signed int[arrSize];
     }
@@ -111,7 +111,7 @@ signed int signedMin(signed int* arr){
         intGenerator(::arr);
         arr = ::arr;
     }
-    signed int min= INT16_MAX;
+    signed int min= INT32_MAX;
     for(size_t i = 0; i < arrSize;i++) {
         if(min > arr[i]){
             min = arr[i];
