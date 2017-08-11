@@ -99,7 +99,7 @@ void intGenerator(signed int* arr) {
     else
         arr = new signed int[arrSize];
     for(size_t i = 0; i < arrSize; ++i){
-            arr[i] =  static_cast<signed int>(generator(randomNumberGenerator)) - INT32_MAX;
+            arr[i] =  static_cast<signed int>(generator(randomNumberGenerator)) ;
         cout << arr[i] << " ";
     }
     cout << endl;
