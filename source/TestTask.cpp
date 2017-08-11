@@ -81,7 +81,7 @@ std::string processWords(std::string const& input){
 
 //Create a method to generate an array of random length (10-20) random signed integer numbers.
 //Print the generated sequence in console.
-signed int* arr=nullptr; // it was initially global ptr... and i'm not allowed to modify main.
+signed int* arr=nullptr; // it was initially global ptr... and i'm not allowed to modify main (i guess?).
 unsigned int arrSize = 0; // impossible to define arr. size on-run: need add. var to store size
 void intGenerator(signed int* arr) {
     std::mt19937_64 randomNumberGenerator;
